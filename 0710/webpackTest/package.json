@@ -16,6 +16,7 @@
     "babel-runtime": "^5.8.38",
     "css-loader": "^0.28.4",
     "express": "^4.15.3",
+    "extract-text-webpack-plugin": "^3.0.0",
     "finalhandler": "^1.0.3",
     "html-webpack-plugin": "^2.29.0",
     "merge-descriptors": "^1.0.1",

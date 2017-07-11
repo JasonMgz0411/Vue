@@ -1,6 +1,7 @@
 //webpack --display-modules --display-chunks --config webpack.config.js
 var path = require('path'),
-	HtmlWebpackPlugin = require('html-webpack-plugin');
+	HtmlWebpackPlugin = require('html-webpack-plugin'),
+	ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
 	entry: {
 		index: [
@@ -8,8 +9,8 @@ module.exports = {
 		]
 	},
 	output: {
-		path: path.resolve(__dirname, './output/static'),
-		publicPath: 'static/',
+		path: path.resolve(__dirname, './output/js'),
+		publicPath: 'js/',
 		filename: '[name].[hash].js',
 		chunkFilename: '[id].[chunkhash].js'
 	},
@@ -22,7 +23,15 @@ module.exports = {
 	module: {
 		loaders: [{
 			test: /\.vue$/,
-			loader: 'vue-loader'
+			loader: 'vue-loader',
+			options: {
+				loaders: {
+					css: ExtractTextPlugin.extract({
+						use: 'css-loader',
+						fallback: 'vue-style-loader' // <- this is a dep of vue-loader, so no need to explicitly install if using npm3
+					})
+				}
+			}
 		}, {
 			test: /\.js$/,
 			loader: 'babel-loader?presets=es2015',
@@ -30,6 +39,7 @@ module.exports = {
 		}]
 	},
 	plugins: [
+		new ExtractTextPlugin("../css/[name].[hash].css"),
 		new HtmlWebpackPlugin({
 			filename: '../index.html',
 			template: path.resolve(__dirname, './pages/index.html'),
