@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../Vue.js"></script>
+</head>
+<body>
+	<div id="test" v-bind:style="styleObj"></div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#test",
+			data:{
+				styleObj:{
+					color:"#fff",
+					background:"#666"
+				}
+			}
+		});
+	</script>
+</body>
+</html>

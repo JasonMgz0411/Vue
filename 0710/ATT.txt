@@ -1,0 +1,9 @@
+cnpm install webpack webpack-dev-server vue-loader vue-html-loader css-loader vue-style-loader vue-hot-reload-api babel-loader babel-core babel-plugin-transform-runtime babel-preset-es2015 babel-runtime@5 --save-dev
+cnpm install html-webpack-plugin --save-dev
+cnpm install vue --save
+cnpm install webpack-dev-middleware webpack-hot-middleware --save-dev
+cnpm install express --save-dev
+/-------------------------------------
+启动express:node dev-server.js
+打包webpack --display-modules --display-chunks --config webpack.config.js
+/-------------------------------------

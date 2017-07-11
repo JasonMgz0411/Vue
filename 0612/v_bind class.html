@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../Vue.js"></script>
+</head>
+
+<body>
+    <!-- 对象属性 -->
+    <div id="test" v-bind:class="classObj"></div>
+    <script type="text/javascript">
+    var vm = new Vue({
+        el: "#test",
+        data: {
+            active: true,
+            round: true,
+            classObj: {
+                active: true,
+                round: false
+            }
+        }
+    });
+    </script>
+    <!-- 返回对象的计算属性 -->
+    <div id="test0" v-bind:class="testMethod"></div>
+    <script type="text/javascript">
+    var vm = new Vue({
+        el: "#test0",
+        data: {
+            active: true,
+            err: null
+        },
+        computed: {
+            testMethod: function() {
+                return {
+                    method: this.active && !this.err,
+                    ttt: this.err === null
+                };
+            }
+        }
+    });
+    </script>
+    <!-- 数组绑定 -->
+    <div id="arrBind" v-bind:class="[test,test0]"></div>
+    <div id="arrBind0" v-bind:class="arr"></div>
+    <script type="text/javascript">
+    var vm = new Vue({
+        el: "#arrBind",
+        data: {
+            test: 'arr0',
+            test0: 'arr1'
+        }
+    });
+    var vm0 = new Vue({
+        el: "#arrBind0",
+        data: {
+            isTest: false
+        },
+        computed: {
+            arr: function() {
+                return [{
+                    "test": this.isTest
+                }, "test0"];
+            }
+        }
+    });
+    </script>
+    <!--自定义组件绑定-->
+    <temple id="hello" v-bind:class="{active:isActive}"></temple>
+    <script type="text/javascript">
+    Vue.component('temple', {
+        template: '<p class="test test0"></p>'
+    });
+    new Vue({
+        el: "#hello",
+        data: {
+            isActive: true
+        }
+    });
+    </script>
+</body>
+
+</html>

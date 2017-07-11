@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/lib/Vue.js"></script>
+</head>
+
+<body>
+    <div id="test" v-bind:title="mesg">
+        <p>{{ message }}</p>
+        <ol>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+        </ol>
+        <p>{{ revert }}</p>
+        <button v-on:click="revertMesg">逆转</button>
+        <p>{{ bindMsg }}</p>
+        <input v-model="bindMsg" />
+        <ol>
+            <todo-item v-for="item in testList" v-bind:hasdo="item"></todo-item>
+        </ol>
+    </div>
+    <script type="text/javascript">
+    Vue.component('todo-item', {
+        props: ['hasdo'],
+        template: '<li>{{ hasdo.text }}</li>'
+    });
+    var app = new Vue({
+        el: "#test",
+        data: {
+            message: "Hello World!",
+            mesg: "加载于" + new Date(),
+            todos: [{
+                text: 'haha'
+            }, {
+                text: 'heihei'
+            }, {
+                text: 'xuxu'
+            }],
+            revert: '马广智',
+            bindMsg: 'myTest',
+            testList: [{
+                text: 'M'
+            }, {
+                text: 'G'
+            }, {
+                text: 'Z'
+            }]
+        },
+        methods: {
+            revertMesg: function() {
+                this.revert = this.revert.split('').reverse().join('');
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>

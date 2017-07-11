@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../Vue.js"></script>
+</head>
+
+<body>
+    <div id="example">
+        <p>{{ first }}</p>
+        <p>{{ end }}</p>
+        <p>{{ full }}</p>
+    </div>
+    <script type="text/javascript">
+    var vm = new Vue({
+        el: "#example",
+        data: {
+            first: "Hello",
+            end: "World"
+        },
+        computed: {
+            full: {
+                get: function() {
+                    return this.first + " " + this.end;
+                },
+                set: function(val) {
+                    val = val.split(' ');
+                    this.first = val[0];
+                    this.end = val[val.length - 1];
+                }
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>

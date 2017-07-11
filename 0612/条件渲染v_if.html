@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../Vue.js"></script>
+</head>
+
+<body>
+		<!-- v-if -->
+    <div id="test">
+        <h1 v-if="ok">Yes</h1>
+        <h1 v-else>No</h1>
+    </div>
+    <script type="text/javascript">
+    var vm = new Vue({
+        el: "#test",
+        data: {
+            ok: true
+        }
+    });
+    </script>
+		<!-- template中v-if条件组 -->
+		<template id="test0" v-if="ok">
+			<h1>Title</h1>
+		</template>
+		<script type="text/javascript">
+			Vue.component('template',{
+				template:'<div></div>'
+			});
+			var vm = new Vue({
+				el:"#test0",
+				data:{
+					ok:true
+				}
+			});
+		</script>
+</body>
+
+</html>
