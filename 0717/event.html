@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test">
+        <button v-on:click="count++">点击</button>
+        <div>被点击{{ count }}次</div>
+    </div>
+    <div id="test0">
+        <button v-on:click="hello">click</button>
+    </div>
+    <div id="test1">
+        <button v-on:click="warn('禁止掉默认的提交事件',$event)">Submit</button>
+    </div>
+    <script type="text/javascript" src="../Vue.js"></script>
+    <script>
+    var $v = new Vue({
+        el: "#test",
+        data: {
+            count: 0
+        }
+    });
+    var $v0 = new Vue({
+        el: "#test0",
+        methods: {
+            hello: function(event) {
+                if (event) {
+                    alert(event.target.tagName);
+                }
+            }
+        }
+    });
+    var $v1 = new Vue({
+        el: "#test1",
+        methods: {
+            warn: function(msg, event) {
+                if (event) event.preventDefault();
+                alert(msg);
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>

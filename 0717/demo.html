@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="test">
+        <li v-for="item in items" v-if="item.flag">{{ item.text }}</li>
+    </ul>
+    <ul id="test0">
+        <li v-for="item in evenItems">{{ item }}</li>
+    </ul>
+    <div id="test1">
+        <ul v-if="show">
+            <li v-for="todo in todos">{{ todo }}</li>
+        </ul>
+    </div>
+    <ul id="test2">
+        <li v-for="item in even()">{{ item }}</li>
+    </ul>
+    <script type="text/javascript" src="../Vue.js"></script>
+    <script>
+    var $v = new Vue({
+        el: '#test',
+        data: {
+            items: [{
+                flag: true,
+                text: 1
+            }, {
+                flag: false,
+                text: 2
+            }, {
+                flag: true,
+                text: 3
+            }]
+        }
+    });
+    /**
+     * 计算属性
+     */
+    var $v0 = new Vue({
+        el: '#test0',
+        data: {
+            items: [9, 2, 5, 4, 8, 1, 0]
+        },
+        computed: {
+            evenItems: function() {
+                return this.items.filter(function(num) {
+                    return num % 2 === 0;
+                });
+            }
+        }
+    });
+    var $v1 = new Vue({
+        el: "#test1",
+        data: {
+            show: true,
+            todos: [1, 3, 4, 5, 6]
+        }
+    });
+    var $v0 = new Vue({
+        el: '#test2',
+        data: {
+            items: [9, 2, 5, 4, 8, 1, 112, 0, 10, 12, 110]
+        },
+        methods: {
+            even: function() {
+                return this.items.sort(function(a, b) {
+                    return a - b;
+                });
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>
