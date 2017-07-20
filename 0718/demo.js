@@ -65,10 +65,10 @@ function setLine() {
             label: {
                 normal: {
                     show: true,
-                    textStyle:{
-                        color:"#45d0b9",
-                        fontSize:"28px",
-                        fontFamily:"DINCond-Bold"
+                    textStyle: {
+                        color: "#45d0b9",
+                        fontSize: "28px",
+                        fontFamily: "DINCond-Bold"
                     }
                 }
             },
@@ -85,6 +85,12 @@ function setLine() {
             },
             data: [1500, 1600, 15000, 20000, 25000, 60000]
         }]
+    });
+    ec.on('click', function(p) {
+        $('#dropTabel').animate({
+            left: p.event.offsetX - 50,
+            top: p.event.offsetY - 70
+        },100);
     });
 }
 

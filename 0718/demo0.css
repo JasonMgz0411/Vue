@@ -17,9 +17,9 @@
     height: 66px;
     line-height: 22px;
     font-size: 18px;
-    color: #85dd3c;
+    color: #83b48b;
     overflow: hidden;
-    position: relative;
+    position: absolute;
 }
 
 li {
