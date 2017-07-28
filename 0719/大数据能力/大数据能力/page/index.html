@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CH">
+
+<head>
+	<meta charset="UTF-8">
+	<title>浙江移动大数据能力</title>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="wrap-left">
+			<div class="box border-bottom">
+				<p class="box-header">数据量大<span>Large amount of data</span></p>
+				<div class="box-con">
+					<ul class="card-wrap">
+						<li>
+							<div class="card">
+								<p class="card-header"><img src="../img/icon1.png" alt="">客户总量</p>
+								<div class="card-num">
+									<p>6000</p>
+									<p><span>万</span> / 户</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="card">
+								<p class="card-header"><img src="../img/icon2.png" alt="">移动上网</p>
+								<div class="card-num">
+									<p>6000</p>
+									<p><span>亿</span> / 条</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="card">
+								<p class="card-header"><img src="../img/icon3.png" alt="">渠道接触</p>
+								<div class="card-num">
+									<p>6000</p>
+									<p><span>亿</span> / 条</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="card">
+								<p class="card-header"><img src="../img/icon4.png" alt="">位置轨迹</p>
+								<div class="card-num">
+									<p>6000</p>
+									<p><span>亿</span> / 条</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="card">
+								<p class="card-header"><img src="../img/icon5.png" alt="">交往数据</p>
+								<div class="card-num">
+									<p>6000</p>
+									<p><span>亿</span> / 条</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="card">
+								<p class="card-header"><img src="../img/icon6.png" alt="">手机通话</p>
+								<div class="card-num">
+									<p>6000</p>
+									<p><span>亿</span> / 条</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<p class="box-info">周期（月）</p>
+			</div>
+			<div class="box">
+				<p class="box-header">实效性高<span>High effectiveness</span></p>
+				<div class="box-con barcont pr">
+					<div class="flip-num">
+						<p>每秒入库：</p>
+						<p id="myTargetElement"></p>
+					</div>
+					<div id="barCont" class="clearfix">
+						<p id="barAdd0">0</p>
+						<p id="barAdd1">0</p>
+						<p id="barAdd2">0</p>
+						<div class="labelCont00"></div>
+						<div class="labelCont01"></div>
+						<div class="labelCont10"></div>
+						<div class="labelCont11"></div>
+						<div class="labelCont20"></div>
+						<div class="labelCont21"></div>
+						<div id="barCont0"></div>
+						<div id="barCont1"></div>
+						<div id="barCont2"></div>
+					</div>
+					<div class="toolBox">
+						<div>
+							<p>单位（条）</p>
+						</div>
+						<div>
+							<p><img src="../img/box0.png">昨日累计数据</p>
+						</div>
+						<div>
+							<p><img src="../img/box1.png">今日实时数据</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="wrap-right">
+			<div class="box box-height40">
+				<p class="box-header">洞察力强<span>Strong insight ability</span></p>
+				<div class="box-con lineCont">
+					<div id="lineCont"></div>
+					<div class="labelCont"></div>
+					<div class="labelCont"></div>
+				</div>
+				<p class="box-info">标签个数</p>
+			</div>
+			<div class="box box-height60">
+				<!--<img src="../img/gif.gif" alt="">-->
+				<!--这里为把gif改成代码 start-->
+				<div class="label">
+					<div class="label-center">
+						<img src="../img/label-center.png" alt="">
+						<div class="label-other">
+							<img id="label-0" src="../img/label-0.png" alt="">
+							<img id="label-1" src="../img/label-1.png" alt="">
+							<img id="label-2" src="../img/label-2.png" alt="">
+							<img id="label-3" src="../img/label-3.png" alt="">
+							<img id="label-4" src="../img/label-4.png" alt="">
+							<img id="label-5" src="../img/label-5.png" alt="">
+							<img id="label-6" src="../img/label-6.png" alt="">
+						</div>
+					</div>
+					<div class="label-active">
+						<img class="label-active-0" src="../img/label-0-active.png" alt="">
+						<img class="label-active-1" src="../img/label-1-active.png" alt="">
+						<img class="label-active-2" src="../img/label-2-active.png" alt="">
+						<img class="label-active-3" src="../img/label-3-active.png" alt="">
+						<img class="label-active-4" src="../img/label-4-active.png" alt="">
+						<img class="label-active-5" src="../img/label-5-active.png" alt="">
+						<img class="label-active-6" src="../img/label-6-active.png" alt="">
+					</div>
+				</div>
+				<!--end-->
+			</div>
+		</div>
+	</div>
+	<!--javascript-->
+	<script src="../js/jquery-1.10.2.min.js"></script>
+	<script src="../js/echarts.min.js"></script>
+	<script src="../js/lib/countUp.js"></script>
+	<script src="../js/index.js"></script>
+	<!--新增的js-->
+	<script src="../js/animation.js"></script>
+</body>
+
+</html>
