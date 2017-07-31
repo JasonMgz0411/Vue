@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test">
+        <input v-model="message" placeholder="你好">
+        <p>{{message}}</p>
+    </div>
+    <script type="text/javascript" src="../Vue.js"></script>
+    <script type="text/javascript">
+    var $v = new Vue({
+        el: '#test',
+        data:{
+        	message:'噢噢'
+        }
+    });
+    </script>
+</body>
+
+</html>
