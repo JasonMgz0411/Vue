@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test">
+        <select v-model="selected">
+            <option disabled value="">请选择</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select>
+        <p>选择了：{{selected}}</p>
+    </div>
+    <div id="test0">
+        <select v-model="selected">
+            <option v-for="option in options" v-bind:value="option.value">{{option.text}}</option>
+        </select>
+        <p>选择了:{{selected}}</p>
+    </div>
+    <div id="test1">
+        <!-- check如果与true-value的值相同就是被选中  如果与false-value的值相同就是没选中  如果都不一样那就是未选中 -->
+        <input type="checkbox" v-model="check" v-bind:true-value="a" v-bind:false-value="b" name="">
+    </div>
+    <div id="test2">
+        <input type="radio" v-model="choose" v-bind:value="a" />
+    </div>
+    <div id="test3">
+        <select v-model="select">
+            <option v-bind:value="{num:888}">888</option>
+        </select>
+    </div>
+    <div id="test4">
+    	<!-- .lazy修饰符标识  在change的时候才会更新绑定属性 -->
+    	<input v-model.lazy="msg">
+    	<br />
+    	<span>{{msg}}</span>
+    	<br />
+    	<!-- .number将输入的文本转成number类型  NaN的话返回输入的文本 -->
+    	<input v-model.number="msg0">
+    	<br />
+    	<span>{{msg0}}</span>
+    	<br />
+    	<!-- .trim剔除首尾空格 -->
+    	<input v-model.trim="msg1">
+    	<br />
+    	<span>{{msg1}}</span>
+    </div>
+    <script type="text/javascript" src="../Vue.js"></script>
+    <script type="text/javascript">
+    var $v = new Vue({
+        el: "#test",
+        data: {
+            selected: ''
+        }
+    });
+    var $v0 = new Vue({
+        el: "#test0",
+        data: {
+            selected: "A",
+            options: [{
+                text: '你好A',
+                value: 'A'
+            }, {
+                text: '你好B',
+                value: 'B'
+            }, {
+                text: '你好C',
+                value: 'C'
+            }]
+        }
+    });
+    var $v1 = new Vue({
+        el: "#test1",
+        data: {
+            check: '我很好',
+            a: '我很好',
+            b: '你好'
+        }
+    });
+    var $v2 = new Vue({
+        el: "#test2",
+        data: {
+            choose: "你好",
+            a: "你好"
+        }
+    });
+    var $v3 = new Vue({
+        el: "#test3",
+        data: {
+            select: { num: 888 }
+        }
+    });
+    var $v4 = new Vue({
+    	el:"#test4",
+    	data:{
+    		msg:'',
+    		msg0:'',
+    		msg1:''
+    	}
+    });
+    </script>
+</body>
+
+</html>
