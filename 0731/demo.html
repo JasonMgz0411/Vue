@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test0">
+        <p>{{message}}</p>
+        <textarea v-model="message" placeholder="添加一段文本"></textarea>
+    </div>
+    <div id="test1">
+    	<input type="checkbox" id="nihao" v-model="check" />
+    	<label for="nihao">{{check}}</label>
+    </div>
+    <div id="test2">
+    	<input type="checkbox" id="jack" value="Jack" v-model="checkArr" />
+    	<label for="jack">Jack</label>
+    	<input type="checkbox" id="john" value="John" v-model="checkArr" />
+    	<label for="john">John</label>
+    	<input type="checkbox" id="lee" value="Lee" v-model="checkArr" />
+    	<label for="lee">Lee</label>
+    	<br />
+    	<span>{{checkArr}}</span>
+    </div>
+    <div id="test3">
+    	<input type="radio" id="XiaoLee" value="XiaoLi" v-model="choose">
+    	<label for="XiaoLee">XiaoLi</label>
+    	<input type="radio" id="XiaoMing" value="mingming" v-model="choose">
+    	<label for="XiaoMing">mingming</label>
+    	<br />
+    	<span>选择了：{{choose}}</span>
+    </div>
+    <script type="text/javascript" src="../Vue.js"></script>
+    <script type="text/javascript">
+    var $v = new Vue({
+        el: "#test0",
+        data: {
+            message: ''
+        }
+    });
+    var $v0 = new Vue({
+        el: "#test1",
+        data: {
+            check: true
+        }
+    });
+    var $v1 = new Vue({
+    	el:"#test2",
+    	data:{
+    		checkArr:[]
+    	}
+    });
+    var $v2 = new Vue({
+    	el:"#test3",
+    	data:{
+    		choose:'XiaoLi'
+    	}
+    });
+    </script>
+</body>
+
+</html>
