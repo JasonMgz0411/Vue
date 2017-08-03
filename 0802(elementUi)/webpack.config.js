@@ -2,17 +2,17 @@ const resolve = require('path').resolve
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const url = require('url')
-const publicPath = ''
+const publicPath = '../'
 
 module.exports = (options = {}) => ({
   entry: {
-    vendor: './src/vendor',
-    index: './src/main.js'
+    vendor: './src/js/project/vendor',
+    index: './src/js/bussinessControl/main.js'
   },
   output: {
     path: resolve(__dirname, 'dist'),
-    filename: options.dev ? '[name].js' : '[name].js?[chunkhash]',
-    chunkFilename: '[id].js?[chunkhash]',
+    filename: options.dev ? '[name].js' : 'js/project/index/[name].[hash].js',
+    chunkFilename: 'js/project/index/[id].[chunkhash].js',
     publicPath: options.dev ? '/assets/' : publicPath
   },
   module: {
@@ -45,7 +45,8 @@ module.exports = (options = {}) => ({
       names: ['vendor', 'manifest']
     }),
     new HtmlWebpackPlugin({
-      template: 'src/index.html'
+      filename: options.dev ? 'index.html': './pages/index.html',
+      template: 'src/pages/index.html'
     })
   ],
   resolve: {
@@ -69,5 +70,5 @@ module.exports = (options = {}) => ({
       index: url.parse(options.dev ? '/assets/' : publicPath).pathname
     }
   },
-  devtool: options.dev ? '#eval-source-map' : '#source-map'
+  // devtool: options.dev ? '#eval-source-map' : '#source-map'
 })

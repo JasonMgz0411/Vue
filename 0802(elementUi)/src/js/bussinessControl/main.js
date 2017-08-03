@@ -7,9 +7,9 @@ import {
 	Pagination
 } from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
-import App from './App.vue'
-import table from './Table.vue'
-import page from './Page.vue'
+import App from '../components/App.vue'
+import table from '../components/Table.vue'
+import page from '../components/Page.vue'
 
 
 Vue.component(row.name, row)
