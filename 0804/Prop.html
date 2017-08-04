@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../Vue.js">
+    /*jshint esversion: 6*/
+    </script>
+</head>
+
+<body>
+    <!-- 使用prop传递属性 -->
+    <div id="test0">
+        <jason-child message="Hello"></jason-child>
+    </div>
+    <script type="text/javascript">
+    Vue.component("jason-child", {
+        props: ["message"],
+        template: "<span>{{message}}</span>"
+    });
+    let $v0 = new Vue({
+        el: "#test0"
+    });
+    </script>
+    <!-- HTML中驼峰式命名需要转换为短横线隔开式命名规范 -->
+    <div id="test1">
+        <!-- 如果使用注释的这种写法   传递的参数名应该是mymessage 原因是HTML属性命名不区分大小写 -->
+        <!-- <jason-child0 myMessage="Hello World!"></jason-child0> -->
+        <!-- 字符串模板写法（建议） -->
+        <jason-child0 my-message="Hello World!"></jason-child0>
+    </div>
+    <script type="text/javascript">
+    Vue.component("jason-child0", {
+        props: ["myMessage"],
+        template: "<span>{{myMessage}}</span>"
+    });
+    let $v1 = new Vue({
+        el: "#test1"
+    });
+    </script>
+    <!-- 动态prop 属性绑定传递到下一层 -->
+    <div id="test2">
+        <input v-model="msg">
+        <br>
+        <jason-span :my-msg="msg"></jason-span>
+    </div>
+    <script type="text/javascript">
+    Vue.component("jason-span", {
+        props: ["myMsg"],
+        template: "<span>{{myMsg}}</span>"
+    });
+    let $v2 = new Vue({
+        el: "#test2",
+        data: {
+            msg: '666'
+        }
+    });
+    </script>
+    <!-- 字面量语法传递 -->
+    <div id="test3">
+        <jason-test3 jason-t3="1"></jason-test3>
+    </div>
+    <script type="text/javascript">
+    Vue.component("jason-test3", {
+        props: ["jasonT3"],
+        /*传递的是字符串'1' 显示的是string*/
+        template: "<span>{{typeof jasonT3}}</span>"
+    });
+    let $v3 = new Vue({
+        el: "#test3"
+    });
+    </script>
+    <!-- 动态语法传递 -->
+    <div id="test4">
+        <jason-test4 :jason-t4="1"></jason-test4>
+    </div>
+    <script type="text/javascript">
+    Vue.component("jason-test4", {
+        props: ["jasonT4"],
+        template: "<span>{{typeof jasonT4}}</span>"
+    });
+    let $v4 = new Vue({
+        el: "#test4"
+    });
+    </script>
+    <!-- 单向数据流 -->
+    <div id="test5">
+        <input v-model="msg">
+        <br>
+        <jason-test5 :jason-t5="msg"></jason-test5>
+    </div>
+    <script type="text/javascript">
+    Vue.component("jason-test5", {
+        props: ["jasonT5"],
+        /*prop 作为初始值传入，由子组件处理成其它数据输出*/
+        template: "<span>{{testMyMsg}}</span>",
+        computed:{
+        	testMyMsg(){
+        		return this.jasonT5.trim().toLowerCase();
+        	}
+        }
+        /*父组件作为初始值传入后  子组件把它当作局部数据来用*/
+        // template:"<span>{{testMyMsg}}</span>",
+        // data(){
+        // 	return {
+        // 		testMyMsg:this.jasonT5
+        // 	};
+        // }
+    });
+    let $v5 = new Vue({
+        el: "#test5",
+        data: {
+            msg: "Hello World"
+        }
+    });
+    </script>
+</body>
+
+</html>
