@@ -15,7 +15,17 @@
 		/*jshint esversion: 6*/
 		Vue.component('json-test0',{
 			props:['myMessage'],
-			template:"<span>{{myMessage}}</span>"
+			data(){
+				return {
+					counter:this.myMessage
+				};
+			},
+			computed:{
+				testMes(){
+					return this.myMessage;
+				}
+			},
+			template:"<span>{{testMes}}</span>"
 		});
 		let $v0 = new Vue({
 			el:"#test0",
