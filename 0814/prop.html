@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../Vue.js"></script>
+</head>
+<body>
+	<div id="test0">
+		<input v-model="message">
+		<br>
+		<json-test0 v-bind:my-message="message"></json-test0>
+	</div>
+	<script type="text/javascript">
+		/*jshint esversion: 6*/
+		Vue.component('json-test0',{
+			props:['myMessage'],
+			template:"<span>{{myMessage}}</span>"
+		});
+		let $v0 = new Vue({
+			el:"#test0",
+			data:{
+				message:'-'
+			}
+		});
+	</script>
+</body>
+</html>
