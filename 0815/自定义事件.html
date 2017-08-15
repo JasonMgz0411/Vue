@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义事件</title>
+	<script type="text/javascript" src="../Vue.js"></script>
+</head>
+<body>
+	<div id="test0">
+		<p>{{ count }}</p>
+		<json-btn v-on:add-coun="addCoun"></json-btn>
+		<json-btn v-on:add-coun="addCoun"></json-btn>
+	</div>
+	<script type="text/javascript">
+		/*jshint esversion: 6*/
+		Vue.component('json-btn',{
+			template:'<button v-on:click="addCoun">{{count}}</button>',
+			data(){
+				return {
+					count:0
+				};
+			},
+			methods:{
+				addCoun(){
+					this.count++;
+					this.$emit('add-coun');
+				}
+			}
+		});
+		let $v0 = new Vue({
+			el:"#test0",
+			data:{
+				count:0
+			},
+			methods:{
+				addCoun(){
+					this.count++;
+				}
+			}
+		});
+	</script>
+</body>
+</html>
