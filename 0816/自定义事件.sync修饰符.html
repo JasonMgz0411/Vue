@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>.sync修饰符</title>
+	<script type="text/javascript" src="../Vue.js"></script>
+</head>
+<body>
+	<div id="test0">
+		<span>{{ message }}</span>
+		<json-sync :my-method="test" @update:my-method="val => test(val)"></json-sync>
+	</div>
+	<script type="text/javascript">
+		/*jshint esversion: 6*/
+		Vue.component('json-sync',{
+			template:"<input v-model='jsonVal' v-on:keyup='change'></input>",
+			data(){
+				return {
+					jsonVal:''
+				};
+			},
+			methods:{
+				change(){
+					this.$emit('update:my-method',this.jsonVal);
+				}
+			}
+		});
+		let $v0 = new Vue({
+			el:"#test0",
+			data:{
+				message:''
+			},
+			methods:{
+				test(val){
+					this.message = val;
+				}
+			}
+		});
+	</script>
+</body>
+</html>
