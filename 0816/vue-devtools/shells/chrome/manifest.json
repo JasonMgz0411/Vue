@@ -25,7 +25,7 @@
 
   "background": {
     "scripts": [ "build/background.js" ],
-    "persistent": false
+    "persistent": true
   },
 
   "permissions": [
