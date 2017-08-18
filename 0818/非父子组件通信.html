@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>非父子组件通信</title>
+    <script type="text/javascript" src="../Vue.js"></script>
+</head>
+
+<body>
+    <div id="test0">
+        <span>{{total}}</span>
+        <br>
+        <jason-btn></jason-btn>
+        <jason-btn></jason-btn>
+    </div>
+    <script type="text/javascript">
+    /*jshint esversion: 6*/
+    let eventLine = new Vue();
+    Vue.component("jason-btn", {
+    	template:"<button @click='addVal'>{{msg}}</button>",
+        data() {
+            return {
+                msg: 0
+            };
+        },
+        methods: {
+            addVal() {
+                this.msg++;
+                eventLine.$emit('add');
+            }
+        }
+    });
+    new Vue({
+        el: "#test0",
+        data: {
+            total: 0
+        },
+        mounted() {
+            const self = this;
+            eventLine.$on('add', function() {
+                self.total++;
+            });
+        }
+    });
+    </script>
+</body>
+
+</html>

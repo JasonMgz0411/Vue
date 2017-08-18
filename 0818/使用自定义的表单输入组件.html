@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>使用自定义的表单输入组件</title>
+    <script type="text/javascript" src="../Vue.js"></script>
+</head>
+
+<body>
+    <div id="test0">
+        <span>{{message}}</span>
+        <jason-input v-model="message"></jason-input>
+    </div>
+    <script type="text/javascript">
+    /*jshint esversion: 6*/
+    Vue.component("jason-input", {
+        template: '\
+				<input\
+					ref="input"\
+					v-bind:value="value"\
+					v-on:input="updateVal($event.target.value)"\
+				>\
+			',
+        props: ["value"],
+        data() {
+            return {};
+        },
+        methods: {
+            updateVal(val) {
+                var formattedValue = val
+                    // 删除两侧的空格符
+                    .trim()
+                    // 保留 2 小数位
+                    .slice(
+                        0,
+                        val.indexOf('.') === -1 ?
+                        val.length :
+                        val.indexOf('.') + 3
+                    );
+                // 如果值不统一，手动覆盖以保持一致
+                if (formattedValue !== val) {
+                    this.$refs.input.value = formattedValue;
+                }
+                // 通过 input 事件发出数值
+                this.$emit('input', Number(formattedValue));
+            }
+        }
+    });
+    let $v0 = new Vue({
+        el: "#test0",
+        data: {
+            message: ""
+        }
+    });
+    </script>
+</body>
+
+</html>

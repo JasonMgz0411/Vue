@@ -8,7 +8,7 @@
 <body>
 	<div id="test0">
 		<span>{{ message }}</span>
-		<json-sync :my-method="test" @update:my-method="val => test(val)"></json-sync>
+		<json-sync v-on:my-method="test"></json-sync>
 	</div>
 	<script type="text/javascript">
 		/*jshint esversion: 6*/
@@ -21,7 +21,7 @@
 			},
 			methods:{
 				change(){
-					this.$emit('update:my-method',this.jsonVal);
+					this.$emit('my-method',this.jsonVal);
 				}
 			}
 		});
