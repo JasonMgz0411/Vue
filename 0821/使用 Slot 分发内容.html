@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Slot分发内容 and 动态组件</title>
+    <script type="text/javascript" src="../Vue.js"></script>
+</head>
+
+<body>
+    <div id="test0">
+        <child>
+            <template scope="props">
+                <span>Hello from parent</span>
+                <br>
+                <span>{{ props.text }}</span>
+            </template>
+        </child>
+    </div>
+    <script type="text/javascript">
+    /*jshint esversion: 6*/
+    Vue.component('child', {
+        template: '<div class="child"><slot text="Hello from child"></slot></div>'
+    });
+    let $v0 = new Vue({
+        el: "#test0"
+    });
+    </script>
+    <div id="test1">
+        <jason-list :items="items">
+            <template slot="item" scope="props">
+                <li class="my-fancy-item">{{ props.text }}</li>
+            </template>
+        </jason-list>
+    </div>
+    <script type="text/javascript">
+    Vue.component('jason-list', {
+        template: "<ul><slot name='item' v-for='item in items' v-bind:text='item.text'></slot></ul>",
+        props: ["items"]
+    });
+    let $v1 = new Vue({
+        el: "#test1",
+        data: {
+            items: [{
+                text: "测试0"
+            }, {
+                text: "测试1"
+            }, {
+                text: "测试2"
+            }]
+        }
+    });
+    </script>
+    <div id="test2">
+        <component :is="currentView"></component>
+    </div>
+    <script type="text/javascript">
+    let components = {
+        vue: {
+            template: '<p>Welcome vue!</p>'
+        },
+        react: {
+            template: '<p>Welcome react!</p>'
+        },
+        angular: {
+            template: '<p>Welcome angular!</p>'
+        }
+    };
+    let $v2 = new Vue({
+        el: "#test2",
+        data: {
+            currentView: "vue"
+        },
+        components: components
+    });
+    </script>
+</body>
+
+</html>
