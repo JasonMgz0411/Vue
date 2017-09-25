@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../Vue.js"></script>
+    <style type="text/css">
+    .test0 {
+    	position: relative;
+    }
+    .test0 div {
+    	position: absolute;
+    }
+    .test0-cont-enter,
+    .test0-cont-leave-to {
+        opacity: 0;
+    }
+
+    .test0-cont-enter-active,
+    .test0-cont-leave-active {
+        transition: opacity 0.3s ease;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="test0" class="test0">
+        <transition name="test0-cont" mode="out-in">
+            <component :is="view"></component>
+        </transition>
+    </div>
+    <script type="text/javascript">
+    Vue.component("v-a", {
+        template: "<div>component A</div>"
+    });
+    Vue.component("v-b", {
+        template: "<div>component B</div>"
+    });
+    let $v0 = new Vue({
+        el: "#test0",
+        data:{
+        	view:"v-a"
+        }
+    });
+    </script>
+</body>
+
+</html>

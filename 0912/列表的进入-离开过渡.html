@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../Vue.js">
+        /*jshint esversion: 6*/
+    </script>
+    <style type="text/css">
+    .list-item {
+        display: inline-block;
+        transition: all 1s;
+        margin-right: 10px;
+    }
+
+    .list-leave-active {
+    	position: absolute;
+    }
+
+    .list-enter,
+    .list-leave-to {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    </style>
+</head>
+
+<body>
+    <div id="test0">
+        <button @click="add">Add</button>
+        <button @click="remove">Remove</button>
+        <transition-group name="list" tag="p">
+            <span v-for="item in items" :key="item" class="list-item">
+				{{ item }}
+			</span>
+        </transition-group>
+    </div>
+    <script type="text/javascript">
+    let $v0 = new Vue({
+        el: "#test0",
+        data: {
+            items: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            next: 10
+        },
+        methods: {
+            add() {
+                this.items.splice(this.randomIndex(), 0, this.next++);
+            },
+            remove() {
+                this.items.splice(this.randomIndex(), 1);
+            },
+            randomIndex() {
+                return Math.floor(this.items.length * Math.random());
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>

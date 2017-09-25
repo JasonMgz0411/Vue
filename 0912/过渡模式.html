@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../Vue.js"></script>
+    <style type="text/css">
+    .test0 {
+        position: relative;
+    }
+
+    .test0 button {
+        position: absolute;
+    }
+
+    .test0-cont-enter-active,
+    .test0-cont-leave-active {
+        transition: all 1s;
+    }
+
+    .test0-cont-enter,
+    .test0-cont-leave-active {
+        opacity: 0;
+    }
+
+    .test0-cont-enter {
+        transform: translateX(31px);
+    }
+
+    .test0-cont-leave-active {
+        transform: translateX(-31px);
+    }
+    </style>
+</head>
+
+<body>
+    <div id="test0" class="test0">
+        <transition name="test0-cont">
+            <button v-if="on" key="on" @click="on = false">on</button>
+            <button v-else key="off" @click="on = true">off</button>
+        </transition>
+    </div>
+    <script type="text/javascript">
+    let $v0 = new Vue({
+        el: "#test0",
+        data: {
+            on: true
+        }
+    });
+    </script>
+</body>
+
+</html>

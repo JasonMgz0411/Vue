@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../Vue.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		/* 基础 */
+		let $v0 = {
+			created(){
+				this.init();
+			},
+			methods:{
+				init(){
+					console.log('init');
+				}
+			}
+		};
+		let Component = Vue.extend({
+			mixins:[$v0]
+		});
+		let component = new Component();
+
+		/* 选项合并 */
+		let $v1 = {
+			created(){
+				console.log('from $v1');
+			}
+		};
+		new Vue({
+			mixins:[$v1],
+			created(){
+				console.log('from self');
+			}
+		});
+	</script>
+</body>
+</html>
